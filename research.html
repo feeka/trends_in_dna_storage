@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Current PubMed papers for each subprocess in DNA data storage.">
+  <title>Research — DNA Storage</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css?v=2.7">
+  <script src="./app.js?v=2.5" defer></script>
+</head>
+<body class="research-body">
+  <a class="skip-link" href="#research-page">Skip to content</a>
+
+  <header class="research-bar">
+    <a id="back-link" class="back-link" href="./index.html">← Process</a>
+    <div class="research-brand">
+      <span>DNA data storage</span>
+      <strong id="research-brand-title">Trends &amp; research</strong>
+    </div>
+    <div class="research-actions">
+      <label class="stage-picker">
+        <span>Stage</span>
+        <select id="stage-select">
+          <option value="prepare">01 · Prepare the digital object</option>
+          <option value="encode">02 · Protect &amp; encode</option>
+          <option value="design">03 · Design the oligo library</option>
+          <option value="synthesize">04 · Synthesize &amp; prepare the pool</option>
+          <option value="preserve">05 · Package &amp; preserve</option>
+          <option value="retrieve">06 · Retrieve &amp; select</option>
+          <option value="sequence">07 · Sequence &amp; basecall</option>
+          <option value="reconstruct">08 · Reconstruct, decode &amp; verify</option>
+        </select>
+      </label>
+      <a id="section-link" class="section-link" href="./research.html?view=about">About</a>
+    </div>
+  </header>
+
+  <main id="research-page">
+    <section class="research-hero" aria-labelledby="research-title">
+      <p id="stage-kicker">01 / 08 · Prepare the digital object</p>
+      <h1 id="research-title"><span id="research-prompt">What is changing in</span> <b id="stage-title">digital-object preparation</b><span id="research-punctuation">?</span></h1>
+      <p id="stage-scope">Recent work on compression, encryption, metadata, integrity, and packetization before DNA encoding.</p>
+    </section>
+
+    <details id="subprocess-menu" class="subprocess-menu">
+      <summary><span id="subprocess-summary">Choose a subprocess</span></summary>
+      <nav class="research-tabs" aria-label="Subprocesses for the selected stage"></nav>
+    </details>
+
+    <div id="trend-layout" class="trend-layout">
+      <aside id="signal-panel" class="signal-panel" aria-labelledby="signal-title">
+        <div>
+          <p class="eyebrow">Publication activity</p>
+          <h2 id="signal-title">Checking the literature…</h2>
+          <p id="signal-period" class="signal-period">Latest three complete years vs the preceding three.</p>
+        </div>
+
+        <dl class="signal-counts">
+          <div><dt id="recent-period">Recent</dt><dd id="recent-count">—</dd></div>
+          <div><dt id="previous-period">Previous</dt><dd id="previous-count">—</dd></div>
+        </dl>
+
+        <div>
+          <p class="eyebrow">Signals in loaded papers</p>
+          <p class="signal-help">Select a signal to filter the publications.</p>
+          <div id="signal-terms" class="signal-terms"><span>Waiting for results</span></div>
+        </div>
+
+        <p class="signal-caveat">Signals match titles and abstracts in loaded papers. Publication counts show activity, not scientific consensus.</p>
+      </aside>
+
+      <aside id="method-panel" class="method-panel" aria-labelledby="method-panel-title" hidden>
+        <div>
+          <p class="eyebrow">Method families</p>
+          <h2 id="method-panel-title">Choose an approach</h2>
+          <p>Families organize the main technical choices for this stage.</p>
+        </div>
+        <div id="method-list" class="method-list"></div>
+        <p class="method-caveat">Families can overlap. Zero results can reflect PubMed coverage.</p>
+      </aside>
+
+      <aside id="reference-index-panel" class="reference-index-panel" aria-labelledby="reference-index-title" hidden>
+        <div>
+          <p id="reference-index-eyebrow" class="eyebrow"></p>
+          <h2 id="reference-index-title"></h2>
+          <p id="reference-index-copy"></p>
+        </div>
+        <div id="reference-list" class="reference-list"></div>
+        <p id="reference-index-caveat" class="reference-caveat"></p>
+      </aside>
+
+      <section id="papers" class="paper-panel" aria-labelledby="papers-title">
+        <header class="paper-heading">
+          <div>
+            <p id="papers-eyebrow" class="eyebrow">Newest first</p>
+            <h2 id="papers-title">Recent publications</h2>
+          </div>
+          <div class="paper-tools">
+            <label class="year-filter" for="year-filter">
+              <span>Year</span>
+              <select id="year-filter" disabled>
+                <option value="">All years</option>
+              </select>
+            </label>
+            <a id="source-link" href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noreferrer">PubMed ↗</a>
+          </div>
+        </header>
+
+        <section id="method-summary" class="method-summary" aria-labelledby="method-title" hidden>
+          <p class="eyebrow">Selected methodology</p>
+          <h2 id="method-title"></h2>
+          <p id="method-description"></p>
+          <dl class="method-facts">
+            <div><dt>Best when</dt><dd id="method-use"></dd></div>
+            <div><dt>Main trade-off</dt><dd id="method-tradeoff"></dd></div>
+          </dl>
+          <div class="method-source-block">
+            <p class="eyebrow">Method sources</p>
+            <div id="method-sources" class="method-sources"></div>
+            <p>These sources support the mechanism. The family name is an editorial grouping.</p>
+          </div>
+        </section>
+
+        <p id="result-status" class="result-status" role="status" tabindex="-1">Loading 10 publications…</p>
+        <ol id="paper-list" class="paper-list" aria-busy="true"></ol>
+
+        <div class="feed-actions">
+          <button id="load-more" class="load-more" type="button" hidden>Load 10 more</button>
+          <button id="retry" class="retry" type="button" hidden>Retry</button>
+        </div>
+
+        <details class="query-details">
+          <summary>Search definition</summary>
+          <code id="query-text"></code>
+        </details>
+        <p class="source-credit">Literature data from PubMed, NCBI.</p>
+      </section>
+
+      <section id="reference-panel" class="reference-panel" aria-labelledby="reference-title" hidden>
+        <header class="reference-heading">
+          <div>
+            <p id="reference-eyebrow" class="eyebrow"></p>
+            <h2 id="reference-title"></h2>
+          </div>
+          <span id="reference-status" class="reference-status"></span>
+        </header>
+        <p id="reference-meta" class="reference-meta"></p>
+        <dl class="reference-facts">
+          <div><dt id="reference-label-one"></dt><dd id="reference-value-one"></dd></div>
+          <div><dt id="reference-label-two"></dt><dd id="reference-value-two"></dd></div>
+          <div><dt id="reference-label-three"></dt><dd id="reference-value-three"></dd></div>
+        </dl>
+        <div class="reference-source-block">
+          <p class="eyebrow">Sources</p>
+          <div id="reference-sources" class="reference-sources"></div>
+          <p id="reference-checked"></p>
+        </div>
+      </section>
+    </div>
+
+    <section id="about-view" class="about-view" aria-labelledby="about-content-title" hidden>
+      <h2 id="about-content-title" class="sr-only">Curation rules</h2>
+      <ol class="curation-list">
+        <li>
+          <b>01</b>
+          <h3>Paper selection</h3>
+          <p>A paper must mention DNA data storage and match at least one term for the selected subprocess. The Boolean terms were written for this site from the cited sources below; they are not a published keyword list.</p>
+        </li>
+        <li>
+          <b>02</b>
+          <h3>Trend counts</h3>
+          <p>Activity compares the latest three complete years with the three before them. Year and signal filters apply only to unique papers already loaded.</p>
+        </li>
+        <li>
+          <b>03</b>
+          <h3>Subprocess tabs</h3>
+          <p>The tabs use the subprocesses shown on the process page. Each tab runs its own PubMed query.</p>
+        </li>
+        <li>
+          <b>04</b>
+          <h3>Limits</h3>
+          <p>No AI service runs in the site or ranks the feed. This is not a systematic review. PubMed coverage is not complete. Counts show publication activity, not quality or agreement.</p>
+        </li>
+      </ol>
+
+      <details class="about-terms" open>
+        <summary>Subprocess search terms and sources</summary>
+        <div id="about-term-index" class="about-term-index"></div>
+      </details>
+    </section>
+  </main>
+
+  <noscript>This page needs JavaScript to retrieve current publications from PubMed.</noscript>
+</body>
+</html>

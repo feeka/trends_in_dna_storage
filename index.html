@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An eight-stage overview of synthetic DNA data storage.">
+  <title>DNA Storage — Process Overview</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css?v=2.7">
+  <script src="./app.js?v=2.5" defer></script>
+</head>
+<body class="landing-body">
+  <a class="skip-link" href="#process-grid">Skip to process</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>DNA data storage</h1>
+    </div>
+    <div class="topbar-actions">
+      <p class="stage-count">8 stages</p>
+      <a class="site-about-link" href="./research.html?view=about">About</a>
+    </div>
+  </header>
+
+  <main id="process-app">
+    <section class="process-workspace" aria-labelledby="process-title">
+      <div class="timeline-pane">
+        <header class="timeline-heading">
+          <h2 id="process-title">DNA storage process</h2>
+          <p>Choose a stage</p>
+        </header>
+
+        <div class="timeline-scroll">
+          <ol id="process-grid" class="process-grid" aria-label="DNA data-storage timeline">
+            <li id="stage-prepare" class="process-item" data-step="0">
+              <button class="process-station" type="button" aria-label="Select Prepare the digital object" aria-controls="stage-detail">
+                <span class="station-index">01</span><span class="station-node" aria-hidden="true"><b>FILE</b></span>
+                <span class="station-copy"><strong>Prepare the digital object</strong><small>Source file → codec-ready blocks</small></span>
+              </button>
+            </li>
+            <li id="stage-encode" class="process-item" data-step="1">
+              <button class="process-station" type="button" aria-label="Select Protect and encode" aria-controls="stage-detail">
+                <span class="station-index">02</span><span class="station-node" aria-hidden="true"><b>101</b></span>
+                <span class="station-copy"><strong>Protect &amp; encode</strong><small>Blocks → error-tolerant DNA code</small></span>
+              </button>
+            </li>
+            <li id="stage-design" class="process-item" data-step="2">
+              <button class="process-station" type="button" aria-label="Select Design the oligo library" aria-controls="stage-detail">
+                <span class="station-index">03</span><span class="station-node" aria-hidden="true"><b>ACGT</b></span>
+                <span class="station-copy"><strong>Design the oligo library</strong><small>DNA code → manufacturable sequences</small></span>
+              </button>
+            </li>
+            <li id="stage-synthesize" class="process-item" data-step="3">
+              <button class="process-station" type="button" aria-label="Select Synthesize and prepare the pool" aria-controls="stage-detail">
+                <span class="station-index">04</span><span class="station-node" aria-hidden="true"><b>DNA</b></span>
+                <span class="station-copy"><strong>Synthesize &amp; prepare pool</strong><small>Sequence designs → physical DNA pool</small></span>
+              </button>
+            </li>
+            <li id="stage-preserve" class="process-item" data-step="4">
+              <button class="process-station" type="button" aria-label="Select Package and preserve" aria-controls="stage-detail">
+                <span class="station-index">05</span><span class="station-node" aria-hidden="true"><b>CAP</b></span>
+                <span class="station-copy"><strong>Package &amp; preserve</strong><small>DNA pool → catalogued archive</small></span>
+              </button>
+            </li>
+            <li id="stage-retrieve" class="process-item" data-step="5">
+              <button class="process-station" type="button" aria-label="Select Retrieve and select" aria-controls="stage-detail">
+                <span class="station-index">06</span><span class="station-node" aria-hidden="true"><b>GET</b></span>
+                <span class="station-copy"><strong>Retrieve &amp; select</strong><small>Archived sample → target molecules</small></span>
+              </button>
+            </li>
+            <li id="stage-sequence" class="process-item" data-step="6">
+              <button class="process-station" type="button" aria-label="Select Sequence and basecall" aria-controls="stage-detail">
+                <span class="station-index">07</span><span class="station-node" aria-hidden="true"><b>READ</b></span>
+                <span class="station-copy"><strong>Sequence &amp; basecall</strong><small>Target molecules → noisy DNA reads</small></span>
+              </button>
+            </li>
+            <li id="stage-reconstruct" class="process-item" data-step="7">
+              <button class="process-station" type="button" aria-label="Select Reconstruct, decode, and verify" aria-controls="stage-detail">
+                <span class="station-index">08</span><span class="station-node" aria-hidden="true"><b>✓</b></span>
+                <span class="station-copy"><strong>Reconstruct, decode &amp; verify</strong><small>DNA reads → verified source file</small></span>
+              </button>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <button id="detail-scrim" class="detail-scrim" type="button" aria-label="Close stage details"></button>
+
+      <aside id="stage-detail" class="stage-detail" data-open="false" aria-labelledby="detail-title">
+        <button id="detail-close" class="detail-close" type="button" aria-label="Close stage details">Close</button>
+
+        <header class="detail-summary">
+          <p>Stage <span id="detail-index">01 / 08</span></p>
+          <h2 id="detail-title">Prepare the digital object</h2>
+          <p id="detail-description">Validate the source and turn it into bounded blocks with metadata for recovery and integrity checks.</p>
+        </header>
+
+        <div class="detail-io">
+          <p><span>Input</span><strong id="detail-input">Source file</strong></p>
+          <b aria-hidden="true">→</b>
+          <p><span>Output</span><strong id="detail-output">Codec-ready blocks and integrity metadata</strong></p>
+        </div>
+
+        <div class="detail-process">
+          <p>What happens</p>
+          <ol id="detail-steps" class="detail-steps">
+            <li><b>01</b><span><strong>Validate input</strong><small>Confirm the file can be read and record its type and size.</small></span></li>
+            <li><b>02</b><span><strong>Compress / encrypt*</strong><small>Reduce the payload and optionally protect its contents.</small></span></li>
+            <li><b>03</b><span><strong>Manifest + hash</strong><small>Record recovery metadata and an integrity target.</small></span></li>
+            <li><b>04</b><span><strong>Chunk</strong><small>Split the payload into blocks the codec can process.</small></span></li>
+          </ol>
+        </div>
+
+        <footer class="detail-footer">
+          <small>* Optional or method-dependent</small>
+          <a id="detail-link" href="./research.html?stage=prepare">Trends &amp; research <b>→</b></a>
+        </footer>
+      </aside>
+    </section>
+
+    <p class="timing-note">Explore the DNA data-storage process, from source file to verified recovery.</p>
+    <p id="status" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+  </main>
+
+  <noscript>The complete timeline is shown above. Selecting a stage requires JavaScript.</noscript>
+</body>
+</html>
